@@ -13,6 +13,11 @@
 		047576C82BB071A300065FE8 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 047576C62BB071A300065FE8 /* ToDoList.xcdatamodeld */; };
 		047576CA2BB071A400065FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047576C92BB071A400065FE8 /* Assets.xcassets */; };
 		047576CD2BB071A400065FE8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 047576CC2BB071A400065FE8 /* Base */; };
+		047576D92BB07BC600065FE8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576D82BB07BC600065FE8 /* ListView.swift */; };
+		047576DB2BB1E7B200065FE8 /* ListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576DA2BB1E7B200065FE8 /* ListModel.swift */; };
+		047576DD2BB1ECE200065FE8 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576DC2BB1ECE200065FE8 /* ListTableViewCell.swift */; };
+		047576E12BB1ED9200065FE8 /* UITableViewCell+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576E02BB1ED9200065FE8 /* UITableViewCell+Ext.swift */; };
+		047576E42BB202E600065FE8 /* ListTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576E32BB202E600065FE8 /* ListTableManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		047576C92BB071A400065FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047576CC2BB071A400065FE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		047576CE2BB071A400065FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		047576D82BB07BC600065FE8 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
+		047576DA2BB1E7B200065FE8 /* ListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListModel.swift; sourceTree = "<group>"; };
+		047576DC2BB1ECE200065FE8 /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		047576E02BB1ED9200065FE8 /* UITableViewCell+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+Ext.swift"; sourceTree = "<group>"; };
+		047576E32BB202E600065FE8 /* ListTableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +66,76 @@
 		047576BC2BB071A200065FE8 /* ToDoList */ = {
 			isa = PBXGroup;
 			children = (
-				047576BD2BB071A300065FE8 /* AppDelegate.swift */,
-				047576BF2BB071A300065FE8 /* SceneDelegate.swift */,
-				047576C12BB071A300065FE8 /* ListViewController.swift */,
-				047576C92BB071A400065FE8 /* Assets.xcassets */,
-				047576CB2BB071A400065FE8 /* LaunchScreen.storyboard */,
-				047576CE2BB071A400065FE8 /* Info.plist */,
+				047576D42BB078D200065FE8 /* Application */,
+				047576D52BB078E900065FE8 /* Module */,
+				047576DE2BB1ED5300065FE8 /* Extensions */,
+				047576D72BB0794300065FE8 /* Resources */,
 				047576C62BB071A300065FE8 /* ToDoList.xcdatamodeld */,
 			);
 			path = ToDoList;
+			sourceTree = "<group>";
+		};
+		047576D42BB078D200065FE8 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				047576BD2BB071A300065FE8 /* AppDelegate.swift */,
+				047576BF2BB071A300065FE8 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		047576D52BB078E900065FE8 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				047576D62BB078F700065FE8 /* List */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		047576D62BB078F700065FE8 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				047576C12BB071A300065FE8 /* ListViewController.swift */,
+				047576E32BB202E600065FE8 /* ListTableManager.swift */,
+				047576DA2BB1E7B200065FE8 /* ListModel.swift */,
+				047576E22BB202C000065FE8 /* View */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		047576D72BB0794300065FE8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				047576C92BB071A400065FE8 /* Assets.xcassets */,
+				047576CB2BB071A400065FE8 /* LaunchScreen.storyboard */,
+				047576CE2BB071A400065FE8 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		047576DE2BB1ED5300065FE8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				047576DF2BB1ED6200065FE8 /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		047576DF2BB1ED6200065FE8 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				047576E02BB1ED9200065FE8 /* UITableViewCell+Ext.swift */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		047576E22BB202C000065FE8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				047576D82BB07BC600065FE8 /* ListView.swift */,
+				047576DC2BB1ECE200065FE8 /* ListTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +208,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				047576DD2BB1ECE200065FE8 /* ListTableViewCell.swift in Sources */,
+				047576E42BB202E600065FE8 /* ListTableManager.swift in Sources */,
+				047576E12BB1ED9200065FE8 /* UITableViewCell+Ext.swift in Sources */,
 				047576C22BB071A300065FE8 /* ListViewController.swift in Sources */,
 				047576BE2BB071A300065FE8 /* AppDelegate.swift in Sources */,
+				047576D92BB07BC600065FE8 /* ListView.swift in Sources */,
+				047576DB2BB1E7B200065FE8 /* ListModel.swift in Sources */,
 				047576C02BB071A300065FE8 /* SceneDelegate.swift in Sources */,
 				047576C82BB071A300065FE8 /* ToDoList.xcdatamodeld in Sources */,
 			);
@@ -285,7 +361,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -316,7 +392,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ToDoList/Info.plist;
+				INFOPLIST_FILE = ToDoList/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
