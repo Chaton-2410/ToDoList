@@ -13,11 +13,11 @@ struct ListModel {
 final class ListModelGenerator {
     static func getData() -> [ListModel] {
         let array: [ListModel] = [
-            ListModel(title: "Title", description: "Description"),
-            ListModel(title: "Title", description: "Description"),
-            ListModel(title: "Title", description: "Description"),
-            ListModel(title: "Title", description: "Description"),
-            ListModel(title: "Title", description: "Description")
+            ListModel(title: "Title1", description: "Description"),
+            ListModel(title: "Title2", description: "Description"),
+            ListModel(title: "Title3", description: "Description"),
+            ListModel(title: "Title4", description: "Description"),
+            ListModel(title: "Title5", description: "Description")
         ]
         
         return array
