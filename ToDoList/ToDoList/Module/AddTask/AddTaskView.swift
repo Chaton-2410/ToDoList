@@ -11,6 +11,10 @@ protocol AddTaskViewDelegate: AnyObject {
     func didSaveButtonTapped()
 }
 
+protocol AddTaskDisplayView: UIView {
+    func setupPickerData(with model: [AddTaskPickerData])
+}
+
 final class AddTaskView: UIView {
     
     private enum Constants {
@@ -59,10 +63,13 @@ final class AddTaskView: UIView {
         let view = UIPickerView()
         view.backgroundColor = .white
         view.layer.cornerRadius = Constants.cornerRadius
+        view.delegate = pickerManager
+        view.dataSource = pickerManager
         return view
     }()
     
-    private lazy var dataPicker = UIDatePicker()
+    private let pickerManager = AddTaskPickerManager()
+    private lazy var datePicker = UIDatePicker()
     
     init() {
         super.init(frame: .zero)
@@ -73,6 +80,13 @@ final class AddTaskView: UIView {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+}
+
+// MARK: - AddTaskDisplayView
+extension AddTaskView: AddTaskDisplayView {
+    func setupPickerData(with model: [AddTaskPickerData]) {
+        pickerManager.dataPicker = model
     }
 }
 
@@ -89,7 +103,7 @@ private extension AddTaskView {
             titleTextField,
             desriptionTextField,
             picker,
-            dataPicker,
+            datePicker,
             saveButton
         ].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
@@ -123,18 +137,16 @@ private extension AddTaskView {
             picker.topAnchor.constraint(equalTo: desriptionTextField.bottomAnchor, constant: Constants.padding),
             picker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
             picker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
-            picker.bottomAnchor.constraint(equalTo: dataPicker.topAnchor, constant: -Constants.padding)
+            picker.bottomAnchor.constraint(equalTo: datePicker.topAnchor, constant: -Constants.padding)
         ])
         
         NSLayoutConstraint.activate([
-            dataPicker.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: Constants.padding),
-            dataPicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
-            dataPicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
-            dataPicker.bottomAnchor.constraint(equalTo: saveButton.topAnchor, constant: -Constants.padding)
+            datePicker.topAnchor.constraint(equalTo: picker.bottomAnchor, constant: Constants.padding),
+            datePicker.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
+            datePicker.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding)
         ])
         
         NSLayoutConstraint.activate([
-            saveButton.topAnchor.constraint(equalTo: dataPicker.bottomAnchor, constant: Constants.padding),
             saveButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Constants.padding),
             saveButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Constants.padding),
             saveButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -Constants.padding),

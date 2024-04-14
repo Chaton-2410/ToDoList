@@ -25,6 +25,7 @@
 		0479A40A2BC5B38B006F955D /* TaskDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4092BC5B38B006F955D /* TaskDetailView.swift */; };
 		0479A40C2BC711DA006F955D /* AddTaskPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */; };
 		0479A40E2BC7196F006F955D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40D2BC7196F006F955D /* UIColor+Ext.swift */; };
+		0479A4102BCC4C40006F955D /* AddTaskPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		0479A4092BC5B38B006F955D /* TaskDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailView.swift; sourceTree = "<group>"; };
 		0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPickerData.swift; sourceTree = "<group>"; };
 		0479A40D2BC7196F006F955D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
+		0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPickerManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +164,7 @@
 				0479A4032BC5B2E4006F955D /* AddTaskViewController.swift */,
 				0479A4072BC5B34C006F955D /* AddTaskView.swift */,
 				0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */,
+				0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */,
 			);
 			path = AddTask;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				047576DD2BB1ECE200065FE8 /* ListTableViewCell.swift in Sources */,
 				0479A4002BC44D2D006F955D /* ListSearchManager.swift in Sources */,
 				047576E42BB202E600065FE8 /* ListTableManager.swift in Sources */,
+				0479A4102BCC4C40006F955D /* AddTaskPickerManager.swift in Sources */,
 				047576E12BB1ED9200065FE8 /* UITableViewCell+Ext.swift in Sources */,
 				0479A40E2BC7196F006F955D /* UIColor+Ext.swift in Sources */,
 				047576C22BB071A300065FE8 /* ListViewController.swift in Sources */,
