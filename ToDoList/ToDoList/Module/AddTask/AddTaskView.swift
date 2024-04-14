@@ -71,6 +71,17 @@ final class AddTaskView: UIView {
     private let pickerManager = AddTaskPickerManager()
     private lazy var datePicker = UIDatePicker()
     
+    private let saveButtonAnimation: CASpringAnimation = {
+        let animation = CASpringAnimation(keyPath: "transform.scale")
+        animation.fromValue = 1
+        animation.toValue = 1.03
+        animation.duration = 0.5
+        animation.damping = 1.5
+        animation.mass = 5
+        animation.autoreverses = true
+        return animation
+    }()
+    
     init() {
         super.init(frame: .zero)
         addSubiews()
@@ -96,6 +107,7 @@ private extension AddTaskView {
     @objc
     private func didSaveButtonTapped(sender: UIButton) {
         delegate?.didSaveButtonTapped()
+        saveButton.layer.add(saveButtonAnimation, forKey: "saveButtonAnimation")
     }
     
     private func addSubiews() {
