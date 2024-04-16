@@ -22,6 +22,7 @@ final class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationItem.title = "Add Task"
         contentView.setupPickerData(with: AddTaskPickerData.allCases)
     }
 }

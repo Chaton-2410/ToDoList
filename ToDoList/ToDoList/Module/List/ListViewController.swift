@@ -48,6 +48,7 @@ extension ListViewController: ListViewDelegate {
     
     func didSelectRow(_ model: ListModel) {
         let controller = TaskDetailViewController()
+        controller.configure(with: model)
         navigationController?.pushViewController(controller, animated: true)
     }
 }
@@ -57,6 +58,7 @@ extension ListViewController {
     
     private func setupNavigation() {
         navigationItem.title = "ToDoList"
+        navigationController?.navigationBar.tintColor = .specialButtonColor
         navigationItem.rightBarButtonItem = .init(
             barButtonSystemItem: .add,
             target: self,
