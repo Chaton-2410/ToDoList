@@ -9,6 +9,9 @@ import UIKit
 
 final class ListViewController: UIViewController {
     
+    private var tasks: [ListModel] = []
+    private let provider: ListDataProviderProtocol
+    
     private lazy var contentView: DisplayListView = {
         let view = ListView()
         view.delegate = self
@@ -19,11 +22,24 @@ final class ListViewController: UIViewController {
         super.loadView()
         view = contentView
     }
-
+    
+    init(provider: ListDataProviderProtocol) {
+        self.provider = provider
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        contentView.confuge(with: ListModelGenerator.getData())
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        tasks = provider.fetchTasks()
+        contentView.confuge(with: tasks)
     }
 }
 
@@ -33,11 +49,12 @@ extension ListViewController: ListViewDelegate {
     func searchBar(textDidChange searchText: String) {
         var filtered: [ListModel] = []
         
-        if searchText.isEmpty {
-            contentView.confuge(with: ListModelGenerator.getData())
+        guard !searchText.isEmpty else {
+            contentView.confuge(with: tasks)
+            return
         }
         
-        for task in ListModelGenerator.getData() {
+        for task in tasks {
             if task.title.lowercased().contains(searchText.lowercased()) {
                 filtered.append(task)
             }
@@ -47,7 +64,11 @@ extension ListViewController: ListViewDelegate {
     }
     
     func didSelectRow(_ model: ListModel) {
-        let controller = TaskDetailViewController()
+        let name: String = "ListCoreDataModel"
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let provider: TaskDetailDataProviderProtocol = TaskDetailDataProvider(coreDataManeger: coreDatraManager)
+        
+        let controller = TaskDetailViewController(task: model, provider: provider)
         controller.configure(with: model)
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -68,7 +89,10 @@ extension ListViewController {
     
     @objc
     private func addAddButtonTapped(sender: UIButton) {
-        let controller = AddTaskViewController()
+        let name: String = "ListCoreDataModel"
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let provider: AddTaskDataProviderProtocol = AddTaskDataProvider(coreDataManeger: coreDatraManager)
+        let controller = AddTaskViewController(provider: provider)
         navigationController?.pushViewController(controller, animated: true)
     }
 }

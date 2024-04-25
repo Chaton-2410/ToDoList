@@ -27,6 +27,16 @@ final class ListView: UIView {
     private lazy var searchManager: ListSearchManager = ListSearchManager()
     weak var delegate: ListViewDelegate?
     
+    private lazy var startLabel: UILabel = {
+        let view = UILabel()
+        view.text = "You haven't add a  tasks yet..."
+        view.textColor = .black
+        view.textAlignment = .center
+        view.font = .systemFont(ofSize: 18)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var  tableView: UITableView = {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.dataSource = listManager
@@ -59,6 +69,7 @@ final class ListView: UIView {
 extension ListView: DisplayListView {
     func confuge(with model: [ListModel]) {
         listManager.tableData = model
+        startLabel.isHidden = model.count != 0
         tableView.reloadData()
     }
 }
@@ -82,6 +93,8 @@ extension ListView: ListTableManagerDelegate {
 private extension ListView {
     
     private func addSubviews() {
+        tableView.addSubview(startLabel)
+        
         [tableView, searchBar].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
@@ -100,6 +113,11 @@ private extension ListView {
             searchBar.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: .zero),
             searchBar.leadingAnchor.constraint(equalTo: leadingAnchor, constant: .zero),
             searchBar.trailingAnchor.constraint(equalTo: trailingAnchor, constant: .zero),
+        ])
+        
+        NSLayoutConstraint.activate([
+            startLabel.topAnchor.constraint(equalTo: tableView.topAnchor, constant: Constants.padding),
+            startLabel.centerXAnchor.constraint(equalTo: tableView.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([

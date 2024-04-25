@@ -10,7 +10,6 @@
 		047576BE2BB071A300065FE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576BD2BB071A300065FE8 /* AppDelegate.swift */; };
 		047576C02BB071A300065FE8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576BF2BB071A300065FE8 /* SceneDelegate.swift */; };
 		047576C22BB071A300065FE8 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576C12BB071A300065FE8 /* ListViewController.swift */; };
-		047576C82BB071A300065FE8 /* ToDoList.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 047576C62BB071A300065FE8 /* ToDoList.xcdatamodeld */; };
 		047576CA2BB071A400065FE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047576C92BB071A400065FE8 /* Assets.xcassets */; };
 		047576CD2BB071A400065FE8 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 047576CC2BB071A400065FE8 /* Base */; };
 		047576D92BB07BC600065FE8 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047576D82BB07BC600065FE8 /* ListView.swift */; };
@@ -26,6 +25,11 @@
 		0479A40C2BC711DA006F955D /* AddTaskPickerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */; };
 		0479A40E2BC7196F006F955D /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40D2BC7196F006F955D /* UIColor+Ext.swift */; };
 		0479A4102BCC4C40006F955D /* AddTaskPickerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */; };
+		0479A4132BCEED9F006F955D /* ListCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4112BCEED9F006F955D /* ListCoreDataModel.xcdatamodeld */; };
+		0479A4172BCEF14E006F955D /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4162BCEF14E006F955D /* CoreDataManager.swift */; };
+		0479A4192BCEF826006F955D /* ListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4182BCEF826006F955D /* ListDataProvider.swift */; };
+		0479A41B2BD055DE006F955D /* AddTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A41A2BD055DE006F955D /* AddTaskDataProvider.swift */; };
+		0479A41F2BDAD62E006F955D /* TaskDetailDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A41E2BDAD62E006F955D /* TaskDetailDataProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +37,6 @@
 		047576BD2BB071A300065FE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		047576BF2BB071A300065FE8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		047576C12BB071A300065FE8 /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
-		047576C72BB071A300065FE8 /* ToDoList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ToDoList.xcdatamodel; sourceTree = "<group>"; };
 		047576C92BB071A400065FE8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		047576CC2BB071A400065FE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		047576CE2BB071A400065FE8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +53,11 @@
 		0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPickerData.swift; sourceTree = "<group>"; };
 		0479A40D2BC7196F006F955D /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 		0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskPickerManager.swift; sourceTree = "<group>"; };
+		0479A4122BCEED9F006F955D /* ListCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ListCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		0479A4162BCEF14E006F955D /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		0479A4182BCEF826006F955D /* ListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataProvider.swift; sourceTree = "<group>"; };
+		0479A41A2BD055DE006F955D /* AddTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDataProvider.swift; sourceTree = "<group>"; };
+		0479A41E2BDAD62E006F955D /* TaskDetailDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,9 +92,9 @@
 			children = (
 				047576D42BB078D200065FE8 /* Application */,
 				047576D52BB078E900065FE8 /* Module */,
+				0479A4142BCEF12B006F955D /* Core */,
 				047576DE2BB1ED5300065FE8 /* Extensions */,
 				047576D72BB0794300065FE8 /* Resources */,
-				047576C62BB071A300065FE8 /* ToDoList.xcdatamodeld */,
 			);
 			path = ToDoList;
 			sourceTree = "<group>";
@@ -117,6 +125,8 @@
 				047576E32BB202E600065FE8 /* ListTableManager.swift */,
 				0479A3FF2BC44D2D006F955D /* ListSearchManager.swift */,
 				047576DA2BB1E7B200065FE8 /* ListModel.swift */,
+				0479A4182BCEF826006F955D /* ListDataProvider.swift */,
+				0479A4112BCEED9F006F955D /* ListCoreDataModel.xcdatamodeld */,
 				047576E22BB202C000065FE8 /* View */,
 			);
 			path = List;
@@ -165,6 +175,7 @@
 				0479A4072BC5B34C006F955D /* AddTaskView.swift */,
 				0479A40B2BC711DA006F955D /* AddTaskPickerData.swift */,
 				0479A40F2BCC4C40006F955D /* AddTaskPickerManager.swift */,
+				0479A41A2BD055DE006F955D /* AddTaskDataProvider.swift */,
 			);
 			path = AddTask;
 			sourceTree = "<group>";
@@ -174,8 +185,25 @@
 			children = (
 				0479A4052BC5B32A006F955D /* TaskDetailViewController.swift */,
 				0479A4092BC5B38B006F955D /* TaskDetailView.swift */,
+				0479A41E2BDAD62E006F955D /* TaskDetailDataProvider.swift */,
 			);
 			path = TaskDetail;
+			sourceTree = "<group>";
+		};
+		0479A4142BCEF12B006F955D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				0479A4152BCEF134006F955D /* CoreData */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		0479A4152BCEF134006F955D /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				0479A4162BCEF14E006F955D /* CoreDataManager.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,16 +282,20 @@
 				047576E42BB202E600065FE8 /* ListTableManager.swift in Sources */,
 				0479A4102BCC4C40006F955D /* AddTaskPickerManager.swift in Sources */,
 				047576E12BB1ED9200065FE8 /* UITableViewCell+Ext.swift in Sources */,
+				0479A4172BCEF14E006F955D /* CoreDataManager.swift in Sources */,
 				0479A40E2BC7196F006F955D /* UIColor+Ext.swift in Sources */,
 				047576C22BB071A300065FE8 /* ListViewController.swift in Sources */,
+				0479A41F2BDAD62E006F955D /* TaskDetailDataProvider.swift in Sources */,
 				047576BE2BB071A300065FE8 /* AppDelegate.swift in Sources */,
 				0479A4062BC5B32A006F955D /* TaskDetailViewController.swift in Sources */,
 				0479A4042BC5B2E4006F955D /* AddTaskViewController.swift in Sources */,
+				0479A4192BCEF826006F955D /* ListDataProvider.swift in Sources */,
+				0479A41B2BD055DE006F955D /* AddTaskDataProvider.swift in Sources */,
 				047576D92BB07BC600065FE8 /* ListView.swift in Sources */,
+				0479A4132BCEED9F006F955D /* ListCoreDataModel.xcdatamodeld in Sources */,
 				0479A40C2BC711DA006F955D /* AddTaskPickerData.swift in Sources */,
 				047576DB2BB1E7B200065FE8 /* ListModel.swift in Sources */,
 				047576C02BB071A300065FE8 /* SceneDelegate.swift in Sources */,
-				047576C82BB071A300065FE8 /* ToDoList.xcdatamodeld in Sources */,
 				0479A4082BC5B34C006F955D /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -487,13 +519,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		047576C62BB071A300065FE8 /* ToDoList.xcdatamodeld */ = {
+		0479A4112BCEED9F006F955D /* ListCoreDataModel.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				047576C72BB071A300065FE8 /* ToDoList.xcdatamodel */,
+				0479A4122BCEED9F006F955D /* ListCoreDataModel.xcdatamodel */,
 			);
-			currentVersion = 047576C72BB071A300065FE8 /* ToDoList.xcdatamodel */;
-			path = ToDoList.xcdatamodeld;
+			currentVersion = 0479A4122BCEED9F006F955D /* ListCoreDataModel.xcdatamodel */;
+			name = ListCoreDataModel.xcdatamodeld;
+			path = "/Users/valeriyatrofimova/Desktop/GitProjects/Account - Chaton-2410/ToDoList/ToDoList/ToDoList/Module/List/ListCoreDataModel.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

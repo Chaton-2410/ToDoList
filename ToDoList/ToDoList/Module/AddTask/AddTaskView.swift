@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AddTaskViewDelegate: AnyObject {
-    func didSaveButtonTapped()
+    func didSaveButtonTapped(with model: ListModel)
 }
 
 protocol AddTaskDisplayView: UIView {
@@ -32,6 +32,9 @@ final class AddTaskView: UIView {
         view.layer.cornerRadius = Constants.cornerRadius
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: view.frame.height))
         view.leftViewMode = .always
+        view.clearButtonMode = .always
+        view.returnKeyType = .done
+        view.delegate = self
         return view
     }()
     
@@ -42,6 +45,9 @@ final class AddTaskView: UIView {
         view.layer.cornerRadius = Constants.cornerRadius
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: view.frame.height))
         view.leftViewMode = .always
+        view.clearButtonMode = .always
+        view.returnKeyType = .done
+        view.delegate = self
         return view
     }()
     
@@ -87,6 +93,7 @@ final class AddTaskView: UIView {
         addSubiews()
         setupViews()
         setConstraints()
+        addTaps()
     }
     
     required init?(coder: NSCoder) {
@@ -101,13 +108,40 @@ extension AddTaskView: AddTaskDisplayView {
     }
 }
 
+// MARK: - UITextFieldDelegate
+extension AddTaskView: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        desriptionTextField.becomeFirstResponder()
+    }
+}
+
 // MARK: - private extension
 private extension AddTaskView {
     
     @objc
     private func didSaveButtonTapped(sender: UIButton) {
-        delegate?.didSaveButtonTapped()
+        let model = ListModel(
+            id: UUID(),
+            title: titleTextField.text ?? "",
+            description: desriptionTextField.text ?? "",
+            date: datePicker.date,
+            category: pickerManager.dataPicker[picker.selectedRow(inComponent: 0)],
+            isCompleted: false)
+        delegate?.didSaveButtonTapped(with: model)
         saveButton.layer.add(saveButtonAnimation, forKey: "saveButtonAnimation")
+    }
+    
+    // скрытие клавиатуры при нажатии на любое место
+    private func addTaps() {
+        let tapScreen = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        tapScreen.cancelsTouchesInView = false
+        addGestureRecognizer(tapScreen)
+    }
+    
+    @objc
+    private func hideKeyboard() {
+        endEditing(true)
     }
     
     private func addSubiews() {
@@ -122,7 +156,7 @@ private extension AddTaskView {
             addSubview($0)
         }
     }
-    
+
     private func setupViews() {
         backgroundColor = .systemGroupedBackground
     }

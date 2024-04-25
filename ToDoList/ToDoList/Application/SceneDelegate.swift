@@ -17,9 +17,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         
+        let name: String = "ListCoreDataModel"
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let provider: ListDataProviderProtocol = ListDataProvider(coreDataManeger: coreDatraManager)
+        
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        let viewController = ListViewController()
+        let viewController = ListViewController(provider: provider)
         let navigationController = UINavigationController(rootViewController: viewController)
         window.rootViewController = navigationController
         self.window = window
@@ -34,8 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func sceneWillEnterForeground(_ scene: UIScene) {}
 
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
-    }
+    func sceneDidEnterBackground(_ scene: UIScene) {}
 }
 
