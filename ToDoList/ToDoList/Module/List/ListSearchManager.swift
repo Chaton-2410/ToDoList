@@ -15,9 +15,13 @@ final class ListSearchManager: NSObject {
     weak var delegate: ListSearchManagerDelegate?
 }
 
+// MARK: - UISearchBarDelegate
 extension ListSearchManager: UISearchBarDelegate {
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(
+        _ searchBar: UISearchBar,
+        textDidChange searchText: String
+    ) {
         delegate?.searchBar(textDidChange: searchText)
     }
 }

@@ -11,6 +11,8 @@ final class ListTableViewCell: UITableViewCell {
     
     private enum Constants {
         static let padding: CGFloat = 8
+        static let descriptionLabelFontSize: CGFloat = 15
+        static let heightLabel: CGFloat = 20
     }
     
     private let titleLabel: UILabel = {
@@ -20,7 +22,8 @@ final class ListTableViewCell: UITableViewCell {
     
     private let descriptionLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 15)
+        label.font = .systemFont(ofSize: Constants
+            .descriptionLabelFontSize)
         label.textColor = .gray
         return label
     }()
@@ -37,7 +40,7 @@ final class ListTableViewCell: UITableViewCell {
 }
 
 
-//MARK: - configure with model
+// MARK: - configure with model
 extension ListTableViewCell {
     func configure(with model: ListModel) {
         titleLabel.text = model.title
@@ -45,7 +48,8 @@ extension ListTableViewCell {
     }
 }
 
-extension ListTableViewCell {
+// MARK: - private extension
+private extension ListTableViewCell {
     
     private func addSubviews() {
         [titleLabel,
@@ -63,7 +67,7 @@ extension ListTableViewCell {
                 .constraint(equalTo: leadingAnchor, constant: Constants.padding),
             titleLabel.trailingAnchor
                 .constraint(equalTo: trailingAnchor, constant: -Constants.padding),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20)
+            titleLabel.heightAnchor.constraint(equalToConstant: Constants.heightLabel)
         ])
         
         NSLayoutConstraint.activate([
@@ -75,7 +79,7 @@ extension ListTableViewCell {
                 .constraint(equalTo: trailingAnchor, constant: -Constants.padding),
             descriptionLabel.bottomAnchor
                 .constraint(equalTo: bottomAnchor, constant: -Constants.padding),
-            descriptionLabel.heightAnchor.constraint(equalToConstant: 20)
+            descriptionLabel.heightAnchor.constraint(equalToConstant: Constants.heightLabel)
         ])
     }
 }

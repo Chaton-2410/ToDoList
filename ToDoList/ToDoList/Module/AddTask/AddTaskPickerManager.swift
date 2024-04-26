@@ -22,8 +22,13 @@ extension AddTaskPickerManager: UIPickerViewDelegate, UIPickerViewDataSource {
         return dataPicker.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(
+        _ pickerView: UIPickerView,
+        titleForRow row: Int,
+        forComponent component: Int
+    ) -> String? {
         let title = dataPicker[row].rawValue
+       
         return title
     }
 }

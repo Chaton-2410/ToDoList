@@ -9,6 +9,10 @@ import UIKit
 
 final class ListViewController: UIViewController {
     
+    private enum Constants {
+        static let navigationTitle = "ToDoList"
+    }
+    
     private var tasks: [ListModel] = []
     private let provider: ListDataProviderProtocol
     
@@ -43,7 +47,7 @@ final class ListViewController: UIViewController {
     }
 }
 
-//MARK: - ListViewDelegate
+// MARK: - ListViewDelegate
 extension ListViewController: ListViewDelegate {
     
     func searchBar(textDidChange searchText: String) {
@@ -64,8 +68,8 @@ extension ListViewController: ListViewDelegate {
     }
     
     func didSelectRow(_ model: ListModel) {
-        let name: String = "ListCoreDataModel"
-        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let persistentContainerName: String = PersistentContainers.listModel
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: persistentContainerName)
         let provider: TaskDetailDataProviderProtocol = TaskDetailDataProvider(coreDataManeger: coreDatraManager)
         
         let controller = TaskDetailViewController(task: model, provider: provider)
@@ -74,11 +78,11 @@ extension ListViewController: ListViewDelegate {
     }
 }
 
-//MARK: - setupNavigation
-extension ListViewController {
+// MARK: - setupNavigation
+private extension ListViewController {
     
     private func setupNavigation() {
-        navigationItem.title = "ToDoList"
+        navigationItem.title = Constants.navigationTitle
         navigationController?.navigationBar.tintColor = .specialButtonColor
         navigationItem.rightBarButtonItem = .init(
             barButtonSystemItem: .add,
@@ -89,8 +93,8 @@ extension ListViewController {
     
     @objc
     private func addAddButtonTapped(sender: UIButton) {
-        let name: String = "ListCoreDataModel"
-        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let persistentContainerName: String = PersistentContainers.listModel
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: persistentContainerName)
         let provider: AddTaskDataProviderProtocol = AddTaskDataProvider(coreDataManeger: coreDatraManager)
         let controller = AddTaskViewController(provider: provider)
         navigationController?.pushViewController(controller, animated: true)

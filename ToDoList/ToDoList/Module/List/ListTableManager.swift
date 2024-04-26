@@ -12,35 +12,60 @@ protocol ListTableManagerDelegate: AnyObject {
 }
 
 final class ListTableManager: NSObject {
+    
+    private enum Constants {
+        static let tableViewHeightForRow: CGFloat = 64
+    }
+    
     var tableData: [ListModel] = []
     weak var delegate: ListTableManagerDelegate?
 }
 
-//MARK: - UITableViewDataSource
+// MARK: - UITableViewDataSource
 extension ListTableManager: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int
+    ) -> Int {
         tableData.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath
+    ) -> UITableViewCell {
+        
         let model: ListModel = tableData[indexPath.row]
-        guard let cell = (tableView.dequeueReusableCell(withIdentifier: ListTableViewCell.identifier, for: indexPath) as? ListTableViewCell) else {
+        
+        guard let cell = (tableView.dequeueReusableCell(
+            withIdentifier: ListTableViewCell.identifier,
+            for: indexPath
+        ) as? ListTableViewCell) else {
             return UITableViewCell()
         }
+        
         cell.configure(with: model)
+        
         return cell
     }
 }
 
-//MARK: - UITableViewDelegate
+// MARK: - UITableViewDelegate
 extension ListTableManager: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath
+    ) {
+        
         let model: ListModel = tableData[indexPath.row]
         delegate?.didSelectRow(model)
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        64
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath
+    ) -> CGFloat {
+        Constants.tableViewHeightForRow
     }
 }

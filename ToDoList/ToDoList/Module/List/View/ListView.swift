@@ -19,8 +19,11 @@ protocol ListViewDelegate: AnyObject {
 
 final class ListView: UIView {
     
-    enum Constants {
+    private enum Constants {
         static let padding: CGFloat = 16
+        static let startLabelFontSize: CGFloat = 18
+        static let searchBarPlaceholder: String = "Enter task name"
+        static let startLabelText: String = "You haven't add a  tasks yet..."
     }
     
     private lazy var listManager: ListTableManager = ListTableManager()
@@ -29,10 +32,10 @@ final class ListView: UIView {
     
     private lazy var startLabel: UILabel = {
         let view = UILabel()
-        view.text = "You haven't add a  tasks yet..."
+        view.text = Constants.startLabelText
         view.textColor = .black
         view.textAlignment = .center
-        view.font = .systemFont(ofSize: 18)
+        view.font = .systemFont(ofSize: Constants.startLabelFontSize)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -41,14 +44,17 @@ final class ListView: UIView {
         let view = UITableView(frame: .zero, style: .insetGrouped)
         view.dataSource = listManager
         view.delegate = listManager
-        view.register(ListTableViewCell.self, forCellReuseIdentifier: ListTableViewCell.identifier)
+        view.register(
+            ListTableViewCell.self,
+            forCellReuseIdentifier: ListTableViewCell.identifier
+        )
         return view
     }()
     
     private lazy var searchBar: UISearchBar = {
         let view = UISearchBar()
         view.delegate = searchManager
-        view.placeholder = "Enter task name"
+        view.placeholder = Constants.searchBarPlaceholder
         view.searchBarStyle = .minimal
         return view
     }()
@@ -65,7 +71,7 @@ final class ListView: UIView {
     }
 }
 
-//MARK: - DisplayListView
+// MARK: - DisplayListView
 extension ListView: DisplayListView {
     func confuge(with model: [ListModel]) {
         listManager.tableData = model
@@ -74,28 +80,28 @@ extension ListView: DisplayListView {
     }
 }
 
-//MARK: - ListSearchManagerDelegate
+// MARK: - ListSearchManagerDelegate
 extension ListView: ListSearchManagerDelegate {
     func searchBar(textDidChange searchText: String) {
         delegate?.searchBar(textDidChange: searchText)
     }
 }
 
-
-//MARK: - ListTableManagerDelegate
+// MARK: - ListTableManagerDelegate
 extension ListView: ListTableManagerDelegate {
     func didSelectRow(_ model: ListModel) {
         delegate?.didSelectRow(model)
     }
 }
 
-//MARK: - private extension
+// MARK: - private extension
 private extension ListView {
     
     private func addSubviews() {
         tableView.addSubview(startLabel)
         
-        [tableView, searchBar].forEach {
+        [tableView, 
+         searchBar].forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }

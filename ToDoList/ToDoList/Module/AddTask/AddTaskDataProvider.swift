@@ -21,6 +21,7 @@ final class AddTaskDataProvider: AddTaskDataProviderProtocol {
     }
    
     func createTask(with model: ListModel) {
+        
         let contex = coreDataManeger.persistentContainer.viewContext
         let task: ListCoreDataModel = ListCoreDataModel(context: contex)
         

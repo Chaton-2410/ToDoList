@@ -9,6 +9,10 @@ import UIKit
 
 final class AddTaskViewController: UIViewController {
     
+    private enum Constants {
+        static let navigationTitle: String = "Add Task"
+    }
+    
     private let provider: AddTaskDataProviderProtocol
     
     private lazy var contentView: AddTaskDisplayView = {
@@ -33,7 +37,7 @@ final class AddTaskViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Add Task"
+        navigationItem.title = Constants.navigationTitle
         contentView.setupPickerData(with: AddTaskPickerData.allCases)
     }
 }

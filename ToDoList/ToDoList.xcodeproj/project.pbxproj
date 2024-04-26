@@ -30,6 +30,7 @@
 		0479A4192BCEF826006F955D /* ListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4182BCEF826006F955D /* ListDataProvider.swift */; };
 		0479A41B2BD055DE006F955D /* AddTaskDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A41A2BD055DE006F955D /* AddTaskDataProvider.swift */; };
 		0479A41F2BDAD62E006F955D /* TaskDetailDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A41E2BDAD62E006F955D /* TaskDetailDataProvider.swift */; };
+		0479A4212BDAFD23006F955D /* PersistentContainers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0479A4202BDAFD23006F955D /* PersistentContainers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		0479A4182BCEF826006F955D /* ListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListDataProvider.swift; sourceTree = "<group>"; };
 		0479A41A2BD055DE006F955D /* AddTaskDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTaskDataProvider.swift; sourceTree = "<group>"; };
 		0479A41E2BDAD62E006F955D /* TaskDetailDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskDetailDataProvider.swift; sourceTree = "<group>"; };
+		0479A4202BDAFD23006F955D /* PersistentContainers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentContainers.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				0479A4162BCEF14E006F955D /* CoreDataManager.swift */,
+				0479A4202BDAFD23006F955D /* PersistentContainers.swift */,
 			);
 			path = CoreData;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				0479A40C2BC711DA006F955D /* AddTaskPickerData.swift in Sources */,
 				047576DB2BB1E7B200065FE8 /* ListModel.swift in Sources */,
 				047576C02BB071A300065FE8 /* SceneDelegate.swift in Sources */,
+				0479A4212BDAFD23006F955D /* PersistentContainers.swift in Sources */,
 				0479A4082BC5B34C006F955D /* AddTaskView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

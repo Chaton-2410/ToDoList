@@ -19,10 +19,29 @@ final class TaskDetailView: UIView {
     
     private enum Constants {
         static let cornerRadius: CGFloat = 15
+        static let labelOfSize: CGFloat = 15
+        static let descriptionLabelLinesLimit: Int = 30
         static let padding: CGFloat = 16
         static let paddingLabel: CGFloat = 8
         static let viewHeight: CGFloat = 50
         static let viewWidthMultiplier: CGFloat = 0.44
+        
+        enum Text {
+            static let completeButtonTitle = "Complete task"
+            static let statusLabelTextCompleted: String = "Completed"
+            static let statusLabelTextProgress: String = "In progress"
+            static let dateLabelText: String = "Date to complete: "
+        }
+        
+        enum Animation {
+            static let keyPath: String = "transform.scale"
+            static let fromValue: CGFloat = 1
+            static let toValue: CGFloat = 1.03
+            static let duration: CFTimeInterval = 0.5
+            static let damping: CGFloat = 1.5
+            static let mass: CGFloat = 5
+            static let animationKey: String = "completeButtonAnimation"
+        }
     }
     
     private enum CategoryName {
@@ -67,21 +86,21 @@ final class TaskDetailView: UIView {
     
     private lazy var categoryLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 15, weight: .medium)
+        view.font = .systemFont(ofSize: Constants.labelOfSize, weight: .medium)
         view.textColor = .white
         return view
     }()
     
     private lazy var statusLabel: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 15, weight: .medium)
+        view.font = .systemFont(ofSize: Constants.labelOfSize, weight: .medium)
         view.textColor = .white
         return view
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 30
+        view.numberOfLines = Constants.descriptionLabelLinesLimit
         return view
     }()
     
@@ -104,7 +123,7 @@ final class TaskDetailView: UIView {
     private lazy var completeButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .specialButtonColor
-        view.setTitle("Complete task", for: .normal)
+        view.setTitle(Constants.Text.completeButtonTitle, for: .normal)
         view.titleLabel?.textColor = .white
         view.layer.cornerRadius = Constants.cornerRadius
         view.addTarget(self, action: #selector(completeTask), for: .touchUpInside)
@@ -114,12 +133,12 @@ final class TaskDetailView: UIView {
     // MARK: - ButtonAnimation
     
     private lazy var completeButtonAnimation: CASpringAnimation = {
-        let animation = CASpringAnimation(keyPath: "transform.scale")
-        animation.fromValue = 1
-        animation.toValue = 1.03
-        animation.duration = 0.5
-        animation.damping = 1.5
-        animation.mass = 5
+        let animation = CASpringAnimation(keyPath: Constants.Animation.keyPath)
+        animation.fromValue = Constants.Animation.fromValue
+        animation.toValue = Constants.Animation.toValue
+        animation.duration = Constants.Animation.duration
+        animation.damping = Constants.Animation.damping
+        animation.mass = Constants.Animation.mass
         animation.autoreverses = true
         return animation
     }()
@@ -138,7 +157,7 @@ final class TaskDetailView: UIView {
     @objc
     private func completeTask(sender: UIButton) {
         delegate?.didCompleteTaskButtonTapped()
-        completeButton.layer.add(completeButtonAnimation, forKey: "completeButtonAnimation")
+        completeButton.layer.add(completeButtonAnimation, forKey: Constants.Animation.animationKey)
     }
 }
 
@@ -148,8 +167,8 @@ extension TaskDetailView: TaskDetailDisplayView {
     func configure(with model: ListModel) {
         
         categoryLabel.text = model.category.rawValue
-        statusLabel.text = model.isCompleted ? "Completed" : "In progress"
-        dateLabel.text = "Date to complete: " + model.date.formatted(date: .abbreviated, time: .shortened)
+        statusLabel.text = model.isCompleted ? Constants.Text.statusLabelTextCompleted : Constants.Text.statusLabelTextProgress
+        dateLabel.text = Constants.Text.dateLabelText + model.date.formatted(date: .abbreviated, time: .shortened)
         descriptionLabel.text = model.description
         
         statusBackground.backgroundColor = model.isCompleted ? .systemGreen : .systemRed
@@ -177,7 +196,6 @@ extension TaskDetailView: TaskDetailDisplayView {
 }
 
 // MARK: - private extension
-
 private extension TaskDetailView {
     
     private func addSubiews() {

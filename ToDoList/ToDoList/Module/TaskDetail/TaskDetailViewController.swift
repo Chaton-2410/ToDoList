@@ -45,7 +45,6 @@ final class TaskDetailViewController: UIViewController {
 }
 
 // MARK: - TaskDetailViewDelegate
-
 extension TaskDetailViewController: TaskDetailViewDelegate {
     func didCompleteTaskButtonTapped() {
         
@@ -55,13 +54,13 @@ extension TaskDetailViewController: TaskDetailViewDelegate {
 }
 
 // MARK: - TaskDetailViewControllerProtocol
-
 extension TaskDetailViewController: TaskDetailViewControllerProtocol {
     func configure(with model: ListModel) {
         navigationItem.title = model.title
     }
 }
 
+// MARK: -  setupNavigation
 private extension TaskDetailViewController {
     
     private func setupNavigation() {

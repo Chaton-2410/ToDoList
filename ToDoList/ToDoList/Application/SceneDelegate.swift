@@ -17,8 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         options connectionOptions: UIScene.ConnectionOptions
     ) {
         
-        let name: String = "ListCoreDataModel"
-        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: name)
+        let persistentContainerName: String = PersistentContainers.listModel
+        let coreDatraManager: CoreDataManagerProtocol = CoreDataManager(persistentContainerName: persistentContainerName)
         let provider: ListDataProviderProtocol = ListDataProvider(coreDataManeger: coreDatraManager)
         
         guard let windowScene = (scene as? UIWindowScene) else { return }

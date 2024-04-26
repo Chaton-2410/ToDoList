@@ -21,13 +21,29 @@ final class AddTaskView: UIView {
         static let padding: CGFloat = 16
         static let cornerRadius: CGFloat = 10
         static let textFieldHeight: CGFloat = 48
+        
+        enum Text {
+            static let titleTextFieldPlaceholder: String = "Enter task title"
+            static let desriptionTextFieldPlaceholder: String = "Enter task desription"
+            static let saveButtonTitle: String = "Save"
+        }
+        
+        enum Animation {
+            static let keyPath: String = "transform.scale"
+            static let fromValue: CGFloat = 1
+            static let toValue: CGFloat = 1.03
+            static let duration: CFTimeInterval = 0.5
+            static let damping: CGFloat = 1.5
+            static let mass: CGFloat = 5
+            static let animationKey: String = "saveButtonAnimation"
+        }
     }
     
     weak var delegate: AddTaskViewDelegate?
     
     private lazy var titleTextField: UITextField = {
         let view = UITextField()
-        view.placeholder = "Enter task title"
+        view.placeholder = Constants.Text.titleTextFieldPlaceholder
         view.backgroundColor = .white
         view.layer.cornerRadius = Constants.cornerRadius
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: view.frame.height))
@@ -40,7 +56,7 @@ final class AddTaskView: UIView {
     
     private lazy var desriptionTextField: UITextField = {
         let view = UITextField()
-        view.placeholder = "Enter task desription"
+        view.placeholder = Constants.Text.desriptionTextFieldPlaceholder
         view.backgroundColor = .white
         view.layer.cornerRadius = Constants.cornerRadius
         view.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 12, height: view.frame.height))
@@ -54,7 +70,7 @@ final class AddTaskView: UIView {
     private lazy var saveButton: UIButton = {
         let view = UIButton()
         view.backgroundColor = .specialButtonColor
-        view.setTitle("Save", for: .normal)
+        view.setTitle(Constants.Text.saveButtonTitle, for: .normal)
         view.titleLabel?.textColor = .white
         view.layer.cornerRadius = Constants.cornerRadius
         view.addTarget(
@@ -78,12 +94,12 @@ final class AddTaskView: UIView {
     private lazy var datePicker = UIDatePicker()
     
     private let saveButtonAnimation: CASpringAnimation = {
-        let animation = CASpringAnimation(keyPath: "transform.scale")
-        animation.fromValue = 1
-        animation.toValue = 1.03
-        animation.duration = 0.5
-        animation.damping = 1.5
-        animation.mass = 5
+        let animation = CASpringAnimation(keyPath: Constants.Animation.keyPath)
+        animation.fromValue = Constants.Animation.fromValue
+        animation.toValue = Constants.Animation.toValue
+        animation.duration = Constants.Animation.duration
+        animation.damping = Constants.Animation.damping
+        animation.mass = Constants.Animation.mass
         animation.autoreverses = true
         return animation
     }()
@@ -129,10 +145,10 @@ private extension AddTaskView {
             category: pickerManager.dataPicker[picker.selectedRow(inComponent: 0)],
             isCompleted: false)
         delegate?.didSaveButtonTapped(with: model)
-        saveButton.layer.add(saveButtonAnimation, forKey: "saveButtonAnimation")
+        saveButton.layer.add(saveButtonAnimation, forKey: Constants.Animation.animationKey)
     }
     
-    // скрытие клавиатуры при нажатии на любое место
+    /// скрытие клавиатуры при нажатии на любое место
     private func addTaps() {
         let tapScreen = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         tapScreen.cancelsTouchesInView = false
